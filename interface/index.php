@@ -4,7 +4,7 @@ $desc_fichier_arduino = '/dev/cu.usbmodem1411';
 if(file_exists($desc_fichier_arduino))
   $etat = file_get_contents($desc_fichier_arduino, NULL, NULL, NULL, 2);
 else
-  $etat = '2';
+  $etat = '1';
 
 function changerCouleur(){
   global $etat;
@@ -24,14 +24,13 @@ function changerTexte(){
   } else if (strpos($etat,'0') !== false){ // toilette disponible
     echo "Disponible";
   } else {
-    echo "Arduino non trouvé. Merci de vérifier les branchements";
+    echo "Arduino non trouvé";
   }
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="refresh" content="2"/>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
   <title>Toilette connecté</title>
@@ -53,7 +52,7 @@ function changerTexte(){
       <div class="row center">
         <h5 class="header col s12 light">Statut du toilette:</h5>
       </div>
-      <div class="row center">
+      <div id="element" class="row center">
         <a href="#" class="btn-large waves-effect waves-light <?php changerCouleur(); ?>" >
           <?php changerTexte(); ?>
         </a>
@@ -97,6 +96,7 @@ function changerTexte(){
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
+  <script src="js/script.js"></script>
 
   </body>
 </html>
