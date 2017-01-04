@@ -4,7 +4,7 @@ $desc_fichier_arduino = '/dev/cu.usbmodem1411';
 if(file_exists($desc_fichier_arduino))
   $etat = file_get_contents($desc_fichier_arduino, NULL, NULL, NULL, 2);
 else
-  $etat = '1';
+  $etat = '2';
 
 function changerCouleur(){
   global $etat;
