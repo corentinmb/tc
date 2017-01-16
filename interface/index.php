@@ -1,8 +1,15 @@
 <?php
 $desc_fichier_arduino = '/dev/cu.usbmodem1411';
 
-if(file_exists($desc_fichier_arduino))
-  $etat = file_get_contents($desc_fichier_arduino, NULL, NULL, NULL, 2);
+//include 'PhpSerial.php';
+//$serial = new PhpSerial;
+//$serial->deviceSet($desc_fichier_arduino);
+//serial->confBaudRate(9600);
+if(file_exists($desc_fichier_arduino)){
+  //$etat = file_get_contents($desc_fichier_arduino, NULL, NULL, NULL, 2);
+  $fichier = fopen($desc_fichier_arduino,"r");
+  $etat = fgetc($fichier);
+}
 else
   $etat = '2';
 

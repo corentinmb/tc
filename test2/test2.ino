@@ -2,6 +2,7 @@
 char rx_byte;
 int sensorPin = A15;
 int sensorValue = 0;
+int lastValue = 0;
 int state = 0; // 1 occupied / 0 free
 // the setup function runs once when you press reset or power the board
 void setup() {
