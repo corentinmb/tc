@@ -1,5 +1,5 @@
 <?php
-$desc_fichier_arduino = '/dev/cu.usbmodem1411';
+$desc_fichier_arduino = '/dev/cu.usbmodem1421';
 
 //include 'PhpSerial.php';
 //$serial = new PhpSerial;
@@ -7,6 +7,7 @@ $desc_fichier_arduino = '/dev/cu.usbmodem1411';
 //serial->confBaudRate(9600);
 if(file_exists($desc_fichier_arduino)){
   //$etat = file_get_contents($desc_fichier_arduino, NULL, NULL, NULL, 2);
+  sleep(1.5);
   $fichier = fopen($desc_fichier_arduino,"r");
   $etat = fgetc($fichier);
 }
@@ -20,7 +21,7 @@ function changerCouleur(){
   }else if(strpos($etat,'0') !== false){
     echo "green";
   } else {
-    echo "red";
+    echo "blue";
   }
 }
 
@@ -31,9 +32,10 @@ function changerTexte(){
   } else if (strpos($etat,'0') !== false){ // toilette disponible
     echo "Disponible";
   } else {
-    echo "Arduino non trouvé";
+    echo "Patientez...";
   }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,8 +65,7 @@ function changerTexte(){
         <a href="#" class="btn-large waves-effect waves-light <?php changerCouleur(); ?>" >
           <?php changerTexte(); ?>
         </a>
-      </div>
-      <br><br>
+      </div><br><br>
 
     </div>
   </div>
